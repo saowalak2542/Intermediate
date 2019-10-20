@@ -5,42 +5,75 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace  Workflow
+namespace Workflow
 {
     class Program
     {
         static void Main(string[] args)
         {
-            WorkFlowEngine workFlow = new WorkFlowEngine();
-            workFlow.AddWorkFlowObject(new VideoUploader());
-            workFlow.AddWorkFlowObject(new CallWebService());
-            workFlow.AddWorkFlowObject(new SendEmail());
-            workFlow.AddWorkFlowObject(new ChangeStatus());
+            WorkFlow workflow = new WorkFlow();
+            workflow.AddWorkFlowObject(new VideoUploader());
+            workflow.AddWorkFlowObject(new CallWebService());
+            workflow.AddWorkFlowObject(new SendEmail());
+            workflow.AddWorkFlowObject(new ChangeStatus());
 
-            workFlow.Run();
+            var engine = new WorkFlowEngine();
+            engine.Run(workflow);
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
-    public interface IWorkFlow
+    public interface ITask
     {
         void Execute();
     }
-    class VideoUploader : IWorkFlow
+    public interface IWorkFlow
+    {
+        void Add(ITask task);
+        void Remove(ITask task);
+        IEnumerable<ITask> GetTasks();
+    }
+    public class WorkFlow : IWorkFlow
+    {
+        private readonly List<ITask> _tasks;
+        public WorkFlow()
+        {
+            _tasks = new List<ITask>();
+        }
+        public void Add(ITask task)
+        {
+            _tasks.Add(task);
+        }
+        public void AddWorkFlowObject(ITask iobject)
+        {
+            _tasks.Add(iobject);
+        }
+        public void Remove(ITask task)
+        {
+            _tasks.Remove(task);
+
+        }
+    }
+    public void RemoveWorkFlowObject(ITask iobject)
+    {
+        _tasks.Add(iobject);
+    }
+    public IEnumerable<ITask> GetTasks()
+    {
+        return _tasks;
+    }
+    class VideoUploader : ITask
     {
         public void Execute()
         {
-            Console.WriteLine("Uploading a Video");
+            Console.WriteLine("Uploading a video");
         }
     }
-    class CallWebService : IWorkFlow
+    public void Execute()
     {
-        public void Execute()
-        {
-            Console.WriteLine("Calling Web Service");
-        }
+        Console.WriteLine("call web service...");
     }
-    class SendEmail : IWorkFlow
+
     {
         public void Execute()
         {
