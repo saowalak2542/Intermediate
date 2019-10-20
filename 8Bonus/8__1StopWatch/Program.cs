@@ -16,16 +16,15 @@ namespace StopWatch
 
             for (int i = 0; i < 2; i++)
             {
-                stopwatch.start(DateTime.Today.AddDays(1));
-                
-                for (int j = 0; j < 1000; j++)
-                {
-                    Thread.Sleep(1);
-                }
+                stopwatch.start();
 
-                stopwatch.stop(DateTime.Today.AddYears(-1));
-                stopwatch.stop(DateTime.Today.AddYears(-1));
-                Console.WriteLine(stopwatch.GetInterval().ToString());
+                Thread.Sleep(1000);
+
+                stopwatch.stop();
+
+                Console.WriteLine("Duration : " + stopwatch.GetInterval().ToString());
+
+                Console.WriteLine("Press Enter to run the stopwatch one more time");
                 Console.ReadLine();
             }
         }
