@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Inheritance
 {
-
     class Program
     {
         static void Main(string[] arg)
         {
-
+            var text = new Text();
+            text.Width = 100;
+            text.Copy();
         }
+    
     }
      
 }
