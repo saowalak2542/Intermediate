@@ -10,7 +10,7 @@ namespace AccessModifiers
     {
         public void OfferVouchar()
         {
-            var rating = this.CalculateRating(excludeOrders: true);
+             var rating = this.CalculateRating(excludeOrders: true);
         }
     }
     class Program
@@ -18,6 +18,7 @@ namespace AccessModifiers
         static void Main(string[] arg)
         {
             var customer = new Customer();
+            Amazon.RateCalculator calculator = new RateCalculator();
         }
 
     }
