@@ -10,7 +10,23 @@ namespace Methods
     {
         static void Main(string[] arg)
         {
-            
+            try
+            {
+                var num = int.Parse("abc");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Conversion failed.");
+            }
+
+
+            int number;
+            var result = int.TryParse("abc", out number);
+            if (result)
+                Console.WriteLine(number);
+            else
+
+                Console.WriteLine("Conversion failed.");
         }
     }
 }
