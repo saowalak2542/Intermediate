@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace AccessModifiers
 {
-    public class GoldCustomer
+    public class GoldCustomer : Customer
     {
-
+        public void OfferVouchar()
+        {
+            var rating = this.CalculateRating(excludeOrders: true);
+        }
     }
     class Program
     {
