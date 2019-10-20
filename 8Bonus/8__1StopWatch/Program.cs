@@ -22,6 +22,8 @@ namespace StopWatch
                 {
                     Thread.Sleep(1);
                 }
+                stopwatch.StartTime = DateTime.Today.AddDays(1);
+                stopwatch.EndTime = DateTime.Today.AddYears(-1);
 
                 stopwatch.stop(DateTime.Now);
                 Console.WriteLine(stopwatch.GetInterval().ToString());
