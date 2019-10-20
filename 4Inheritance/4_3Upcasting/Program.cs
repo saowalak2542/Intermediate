@@ -6,11 +6,22 @@ using System.Threading.Tasks;
 
 namespace Casting
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] arg)
         {
+            Text text = new Text();
+            Shape shape = text;
 
+
+            text.Width = 200;
+            shape.Width = 100;
+
+
+
+            Console.WriteLine(text.Width);
         }
-    }   
+
+    }
+      
 }
