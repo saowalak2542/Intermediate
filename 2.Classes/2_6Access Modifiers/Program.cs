@@ -22,7 +22,11 @@ namespace AccessModifiers
     {
         static void Main(string[] arg)
         {
+            var person = new Person();
+            person.SetBirthdate(new DateTime(1982, 1, 1));
+            Console.WriteLine(person.GetHashCode());
 
         }
+    }
     }
 }
