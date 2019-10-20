@@ -10,7 +10,7 @@ namespace Constructors
     {
         static void Main(string[] arg)
         {
-           
+            var car = new Car("XYZ1234");
         }
 
     }
