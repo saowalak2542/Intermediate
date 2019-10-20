@@ -2,11 +2,11 @@
 
 namespace InterfacePolymor
 {
-    public class MailNotificationChannel
+    public class SmsNotificationChannel
     {
         public void Send(Message message)
         {
-            Console.WriteLine("Sending mail...");
+            Console.WriteLine("Sending SMS...");
         }
     }
       
